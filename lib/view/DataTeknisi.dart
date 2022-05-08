@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helpdesk_apps/model/TeknisModel.dart';
 import 'package:helpdesk_apps/model/api.dart';
+import 'package:helpdesk_apps/view/EditTeknisi.dart';
+import 'package:helpdesk_apps/view/TambahTeknisi.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'dart:convert';
@@ -41,6 +43,70 @@ class _DataTeknisState extends State<DataTeknis> {
     }
   }
 
+  _proseshapus(String id) async {
+    final response = await http
+        .post(Uri.parse(BaseUrl.urlHapusTeknisi), body: {"id_teknisi": id});
+    final data = jsonDecode(response.body);
+    int value = data['success'];
+    String pesan = data['message'];
+    if (value == 1) {
+      setState(() {
+        Navigator.pop(context);
+        _lihatData();
+        ;
+      });
+    } else {
+      print(pesan);
+    }
+  }
+
+  dialogHapus(String id) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: ListView(
+            padding: EdgeInsets.all(16.0),
+            shrinkWrap: true,
+            children: <Widget>[
+              Text(
+                "Apakah anda yakin ingin menghapus data ini?",
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 18.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "Tidak",
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(width: 25.0),
+                  InkWell(
+                    onTap: () {
+                      _proseshapus(id);
+                    },
+                    child: Text(
+                      "Ya",
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -64,7 +130,13 @@ class _DataTeknisState extends State<DataTeknis> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          // print("tambah teknisi");
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => new TambahTeknisi(_lihatData)));
+        },
         child: Icon(Icons.add),
         backgroundColor: Color.fromRGBO(255, 82, 48, 1),
       ),
@@ -99,8 +171,20 @@ class _DataTeknisState extends State<DataTeknis> {
                               ],
                             ),
                           ),
-                          IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
-                          IconButton(onPressed: () {}, icon: Icon(Icons.delete))
+                          IconButton(
+                              onPressed: () {
+                                // edit
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        EditTeknisi(x, _lihatData)));
+                              },
+                              icon: Icon(Icons.edit)),
+                          IconButton(
+                              onPressed: () {
+                                // delete
+                                dialogHapus(x.id_teknisi);
+                              },
+                              icon: Icon(Icons.delete))
                         ],
                       ),
                     );
