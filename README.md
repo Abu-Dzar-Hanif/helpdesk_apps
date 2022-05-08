@@ -1,4 +1,9 @@
 # helpdesk_apps
+ini merupakan versi beta dari aplikasi helpdesk versi mobile
+fitur :
+multi user login,
+autocomplate,
+gridview menu
 
 A new Flutter project.
 
