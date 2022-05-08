@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:helpdesk_apps/LoginPage.dart';
+
 class SplashScreen extends StatefulWidget {
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -9,14 +10,14 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
     StartScreen();
   }
 
-  StartScreen(){
+  StartScreen() {
     var duration = const Duration(seconds: 5);
-    return Timer(duration, (){
+    return Timer(duration, () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
           return LoginPage();
@@ -30,8 +31,8 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Image.asset('assets/logo_m2v.png', height: 200, width: 200)
-        ),
+          child:
+              Image.asset('assets/logo_m2v_n2.jpg', height: 200, width: 200)),
     );
   }
 }
