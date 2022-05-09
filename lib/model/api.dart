@@ -5,4 +5,9 @@ class BaseUrl {
   static String urlTambahTeknisi = url + "api/tambah_teknisi.php";
   static String urlHapusTeknisi = url + "api/hapus_teknisi.php";
   static String urlEditTeknisi = url + "api/edit_teknisi.php";
+  static String urlGender = url + "api/data_gender.php";
+  static String urlDataAdmin = url + "api/data_admin.php";
+  static String urlTambahAdmin = url + "api/tambah_admin.php";
+  static String urlHapusAdmin = url + "api/hapus_admin.php";
+  static String urlEditAdmin = url + "api/edit_admin.php";
 }
