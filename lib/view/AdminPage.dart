@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helpdesk_apps/view/DataAdmin.dart';
+import 'package:helpdesk_apps/view/DataJenis.dart';
 import 'package:helpdesk_apps/view/DataPC.dart';
 import 'package:helpdesk_apps/view/DataTeknisi.dart';
 
@@ -46,7 +47,11 @@ class _AdminPageState extends State<AdminPage> {
                     flex: 1,
                     child: GestureDetector(
                       onTap: () {
-                        print("Container 2 clicked");
+                        // print("type / jenis pc");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => new DataJenis()));
                       },
                       child: new Container(
                         width: MediaQuery.of(context).size.width,
@@ -66,7 +71,7 @@ class _AdminPageState extends State<AdminPage> {
                               height: 20,
                             ),
                             Text(
-                              "Users",
+                              "Type / Jenis",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,

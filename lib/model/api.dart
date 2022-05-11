@@ -14,4 +14,8 @@ class BaseUrl {
   static String urlTambahPC = url + "api/tambah_pc.php";
   static String urlHapusPC = url + "api/hapus_pc.php";
   static String urlEditPC = url + "api/edit_pc.php";
+  static String urlDataJenis = url + "api/data_jenis.php";
+  static String urlTambahJenis = url + "api/tambah_jenis.php";
+  static String urlHapusJenis = url + "api/hapus_jenis.php";
+  static String urlEditJenis = url + "api/edit_jenis.php";
 }
