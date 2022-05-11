@@ -63,7 +63,7 @@ class _AdminPageState extends State<AdminPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Icon(
-                              Icons.groups,
+                              Icons.label,
                               size: 40.0,
                               color: Colors.white,
                             ),
