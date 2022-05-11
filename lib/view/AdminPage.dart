@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helpdesk_apps/view/DataAdmin.dart';
+import 'package:helpdesk_apps/view/DataPC.dart';
 import 'package:helpdesk_apps/view/DataTeknisi.dart';
 
 // import 'package:cupertino_icons/cupertino_icons.dart';
@@ -124,7 +125,11 @@ class _AdminPageState extends State<AdminPage> {
                     flex: 1,
                     child: GestureDetector(
                       onTap: () {
-                        print("Container 1 clicked");
+                        // print("data pc");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => new DataPC()));
                       },
                       child: new Container(
                         width: MediaQuery.of(context).size.width,

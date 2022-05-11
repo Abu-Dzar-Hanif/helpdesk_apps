@@ -10,4 +10,8 @@ class BaseUrl {
   static String urlTambahAdmin = url + "api/tambah_admin.php";
   static String urlHapusAdmin = url + "api/hapus_admin.php";
   static String urlEditAdmin = url + "api/edit_admin.php";
+  static String urlDataPC = url + "api/data_pc.php";
+  static String urlTambahPC = url + "api/tambah_pc.php";
+  static String urlHapusPC = url + "api/hapus_pc.php";
+  static String urlEditPC = url + "api/edit_pc.php";
 }
