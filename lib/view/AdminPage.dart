@@ -3,6 +3,7 @@ import 'package:helpdesk_apps/view/DataAdmin.dart';
 import 'package:helpdesk_apps/view/DataJenis.dart';
 import 'package:helpdesk_apps/view/DataPC.dart';
 import 'package:helpdesk_apps/view/DataTeknisi.dart';
+import 'package:helpdesk_apps/view/SearchTeknisi.dart';
 
 // import 'package:cupertino_icons/cupertino_icons.dart';
 class AdminPage extends StatefulWidget {
@@ -155,6 +156,89 @@ class _AdminPageState extends State<AdminPage> {
                             ),
                             Text(
                               "PC",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )),
+                Flexible(
+                    flex: 1,
+                    child: GestureDetector(
+                      onTap: () {
+                        // print("menu admin");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => new DataAdmin()));
+                      },
+                      child: new Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            color: Colors.lightBlueAccent,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              Icons.admin_panel_settings_outlined,
+                              size: 40.0,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "Admin",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )),
+              ],
+            ),
+          ),
+          Flexible(
+            flex: 0,
+            child: Row(
+              children: <Widget>[
+                Flexible(
+                    flex: 1,
+                    child: GestureDetector(
+                      onTap: () {
+                        // print("data pc");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => new SearchTeknisi()));
+                      },
+                      child: new Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            color: Colors.redAccent,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              Icons.desktop_windows,
+                              size: 40.0,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "Cari detail teknisi",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,

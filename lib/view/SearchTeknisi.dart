@@ -100,10 +100,34 @@ class _SearchTeknisiState extends State<SearchTeknisi> {
                       });
                     },
                     itemBuilder: (context, item) {
-                      return row(item);
+                      return _buildContainer(item);
                     },
                   )
           ],
         ));
+  }
+
+  Widget _buildContainer(Teknisi teknisi) {
+    return Container(
+      padding: EdgeInsets.all(30.0),
+      child: Center(
+        child: Column(
+          children: <Widget>[
+            Text(
+              "ID : " + teknisi.id_teknisi.toString(),
+              style: TextStyle(fontSize: 16.0),
+            ),
+            Text(
+              "Nama : " + teknisi.nama_teknisi.toString(),
+              style: TextStyle(fontSize: 16.0),
+            ),
+            SizedBox(
+              width: 10.0,
+            ),
+            Text("Gender" + teknisi.gender_teknisi.toString()),
+          ],
+        ),
+      ),
+    );
   }
 }

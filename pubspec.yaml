@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^2.0.0
   # autocomplete_textfield: ^1.7.3
   autocomplete_textfield_ns: ^2.0.0
+  flutter_typeahead: ^3.2.5
 
 dev_dependencies:
   flutter_test:
