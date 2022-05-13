@@ -230,7 +230,7 @@ class _AdminPageState extends State<AdminPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Icon(
-                              Icons.desktop_windows,
+                              Icons.search,
                               size: 40.0,
                               color: Colors.white,
                             ),
@@ -248,44 +248,44 @@ class _AdminPageState extends State<AdminPage> {
                         ),
                       ),
                     )),
-                Flexible(
-                    flex: 1,
-                    child: GestureDetector(
-                      onTap: () {
-                        // print("menu admin");
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => new DataAdmin()));
-                      },
-                      child: new Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: Colors.lightBlueAccent,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.admin_panel_settings_outlined,
-                              size: 40.0,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              "Admin",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )),
+                // Flexible(
+                //     flex: 1,
+                //     child: GestureDetector(
+                //       onTap: () {
+                //         // print("menu admin");
+                //         Navigator.push(
+                //             context,
+                //             MaterialPageRoute(
+                //                 builder: (context) => new DataAdmin()));
+                //       },
+                //       child: new Container(
+                //         width: MediaQuery.of(context).size.width,
+                //         margin: EdgeInsets.all(10),
+                //         decoration: BoxDecoration(
+                //             color: Colors.lightBlueAccent,
+                //             borderRadius: BorderRadius.circular(10)),
+                //         child: Column(
+                //           mainAxisAlignment: MainAxisAlignment.center,
+                //           children: <Widget>[
+                //             Icon(
+                //               Icons.admin_panel_settings_outlined,
+                //               size: 40.0,
+                //               color: Colors.white,
+                //             ),
+                //             SizedBox(
+                //               height: 20,
+                //             ),
+                //             Text(
+                //               "Admin",
+                //               style: TextStyle(
+                //                   color: Colors.white,
+                //                   fontSize: 16,
+                //                   fontWeight: FontWeight.bold),
+                //             ),
+                //           ],
+                //         ),
+                //       ),
+                //     )),
               ],
             ),
           ),
