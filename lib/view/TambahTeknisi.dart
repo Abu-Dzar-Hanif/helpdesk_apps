@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:helpdesk_apps/model/api.dart';
 import 'package:helpdesk_apps/model/TeknisModel.dart';
+import 'package:helpdesk_apps/model/GenderModel.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:flutter/services.dart';
@@ -18,6 +19,22 @@ class TambahTeknisi extends StatefulWidget {
 class _TambahTeknisiState extends State<TambahTeknisi> {
   String? nama_teknisi, gender_teknisi;
   final _key = new GlobalKey<FormState>();
+  GenderModel? _currentGender;
+  final String? linkGender = BaseUrl.urlGender;
+  Future<List<GenderModel>> _fetchGender() async {
+    var response = await http.get(Uri.parse(linkGender.toString()));
+    print('hasil: ' + response.statusCode.toString());
+    if (response.statusCode == 200) {
+      final items = json.decode(response.body).cast<Map<String, dynamic>>();
+      List<GenderModel> listOfGender = items.map<GenderModel>((json) {
+        return GenderModel.formJson(json);
+      }).toList();
+      return listOfGender;
+    } else {
+      throw Exception('gagal');
+    }
+  }
+
   check() {
     final form = _key.currentState;
     if ((form as dynamic).validate()) {
@@ -75,14 +92,34 @@ class _TambahTeknisiState extends State<TambahTeknisi> {
                 onSaved: (e) => nama_teknisi = e,
                 decoration: InputDecoration(labelText: "Nama Teknisi"),
               ),
-              TextFormField(
-                validator: (e) {
-                  if ((e as dynamic).isEmpty) {
-                    return "Silahkan isi nama kategori";
-                  }
+              SizedBox(
+                height: 20.0,
+              ),
+              Text("Gender"),
+              FutureBuilder<List<GenderModel>>(
+                future: _fetchGender(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<GenderModel>> snapshot) {
+                  if (!snapshot.hasData) return CircularProgressIndicator();
+                  return DropdownButton<GenderModel>(
+                    items: snapshot.data!
+                        .map((listGender) => DropdownMenuItem(
+                              child: Text(listGender.jenis_gender.toString()),
+                              value: listGender,
+                            ))
+                        .toList(),
+                    onChanged: (GenderModel? value) {
+                      setState(() {
+                        _currentGender = value;
+                        gender_teknisi = _currentGender!.inisial;
+                      });
+                    },
+                    isExpanded: false,
+                    hint: Text(gender_teknisi == null
+                        ? "Pilih jenis Kelamin"
+                        : _currentGender!.jenis_gender.toString()),
+                  );
                 },
-                onSaved: (e) => gender_teknisi = e,
-                decoration: InputDecoration(labelText: "Gender Teknisi"),
               ),
               MaterialButton(
                 onPressed: () {
