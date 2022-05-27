@@ -4,8 +4,9 @@ import 'package:helpdesk_apps/view/DataJenis.dart';
 import 'package:helpdesk_apps/view/DataPC.dart';
 import 'package:helpdesk_apps/view/DataTeknisi.dart';
 import 'package:helpdesk_apps/view/SearchTeknisi.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/cupertino.dart';
 
-// import 'package:cupertino_icons/cupertino_icons.dart';
 class AdminPage extends StatefulWidget {
   final VoidCallback signOut;
 
@@ -15,6 +16,16 @@ class AdminPage extends StatefulWidget {
 }
 
 class _AdminPageState extends State<AdminPage> {
+  String? idKaryawan, userName, nama;
+  getPref() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      idKaryawan = pref.getString("id_karyawan");
+      userName = pref.getString("username");
+      nama = pref.getString("nama_karyawan");
+    });
+  }
+
   signOut() {
     setState(() {
       widget.signOut();
@@ -22,19 +33,24 @@ class _AdminPageState extends State<AdminPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    getPref();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var color = 0xffF6F8FC;
     return Scaffold(
       appBar: AppBar(
         elevation: 0.1,
-        backgroundColor: Colors.orange,
-        title: Text('Administrator Page'),
+        backgroundColor: Color.fromARGB(255, 41, 69, 91),
+        title: Text('Helpdesk | ' + nama.toString()),
         actions: <Widget>[
           new IconButton(
               onPressed: () {
                 signOut();
               },
-              icon: Icon(Icons.double_arrow),
+              icon: Icon(Icons.logout),
               color: Colors.white)
         ],
       ),
@@ -57,20 +73,24 @@ class _AdminPageState extends State<AdminPage> {
                       child: new Container(
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             color: Colors.orangeAccent,
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                            // SizedBox(
+                            //   height: 10,
+                            // ),
                             Icon(
-                              Icons.label,
+                              CupertinoIcons.tags_solid,
                               size: 40.0,
                               color: Colors.white,
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
+                            // SizedBox(
+                            //   height: 10,
+                            // ),
                             Text(
                               "Type / Jenis",
                               style: TextStyle(
