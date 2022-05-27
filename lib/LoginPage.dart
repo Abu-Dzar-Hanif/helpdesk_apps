@@ -41,24 +41,25 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   login() async {
-    final response = await http.post(Uri.parse(BaseUrl.urlLogin),
+    final response = await http.post(Uri.parse(BaseUrl.urlLogin2),
         body: {"username": username, "password": password});
     final data = jsonDecode(response.body);
     int value = data['success'];
     String pesan = data['message'];
     String usernameAPI = data['username'];
-    String namaAPI = data['nama'];
+    String idAPI = data['id_karyawan'];
+    String namaAPI = data['nama_karyawan'];
     String userLevel = data['level'];
     if (value == 1) {
       if (userLevel == "1") {
         setState(() {
           _loginStatus = LoginStatus.signIn;
-          savePref(value, usernameAPI, namaAPI, userLevel);
+          savePref(value, usernameAPI, idAPI, namaAPI, userLevel);
         });
       } else {
         setState(() {
           _loginStatus = LoginStatus.signUser;
-          savePref(value, usernameAPI, namaAPI, userLevel);
+          savePref(value, usernameAPI, idAPI, namaAPI, userLevel);
         });
       }
       print(pesan);
@@ -67,12 +68,14 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  savePref(int val, String usernameAPI, String namaAPI, userLevel) async {
+  savePref(int val, String usernameAPI, String idAPI, String namaAPI,
+      userLevel) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       preferences.setInt("value", val);
       preferences.setString("username", usernameAPI);
-      preferences.setString("nama", namaAPI);
+      preferences.setString("id_karyawan", idAPI);
+      preferences.setString("nama_karyawan", namaAPI);
       preferences.setString("level", userLevel);
       preferences.commit();
     });
@@ -86,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       value = preferences.getInt("value");
       level = preferences.getString("level");
-      nama = preferences.getString("nama");
+      nama = preferences.getString("nama_karyawan");
       if (value == 1) {
         if (level == "1") {
           _loginStatus = LoginStatus.signIn;
@@ -104,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       preferences.setInt("value", 0);
       preferences.setString("username", null.toString());
-      preferences.setString("nama", null.toString());
+      preferences.setString("nama_karyawan", null.toString());
       preferences.setString("level", null.toString());
       preferences.commit();
       _loginStatus = LoginStatus.notSignIn;
@@ -162,13 +165,21 @@ class _LoginPageState extends State<LoginPage> {
                               : Icons.visibility),
                           onPressed: showHide)),
                 ),
+                SizedBox(
+                  height: 25,
+                ),
                 MaterialButton(
-                  padding: EdgeInsets.all(25.0),
-                  color: Colors.blue,
+                  padding: EdgeInsets.all(20.0),
+                  color: Color.fromARGB(255, 41, 69, 91),
                   onPressed: () {
                     check();
                   },
-                  child: Text('Login'),
+                  child: Text(
+                    'Login',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40)),
                 ),
               ],
             ),
