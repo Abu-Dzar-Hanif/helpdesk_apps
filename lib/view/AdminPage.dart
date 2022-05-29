@@ -41,276 +41,191 @@ class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.1,
-        backgroundColor: Color.fromARGB(255, 41, 69, 91),
-        title: Text('Helpdesk | ' + nama.toString()),
-        actions: <Widget>[
-          new IconButton(
-              onPressed: () {
-                signOut();
-              },
-              icon: Icon(Icons.logout),
-              color: Colors.white)
-        ],
-      ),
-      body: Column(
-        children: <Widget>[
-          Flexible(
-            flex: 0,
-            child: Row(
-              children: <Widget>[
-                Flexible(
-                    flex: 1,
-                    child: GestureDetector(
-                      onTap: () {
-                        // print("type / jenis pc");
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => new DataJenis()));
-                      },
-                      child: new Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: Colors.orangeAccent,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            // SizedBox(
-                            //   height: 10,
-                            // ),
-                            Icon(
-                              CupertinoIcons.tags_solid,
-                              size: 40.0,
-                              color: Colors.white,
-                            ),
-                            // SizedBox(
-                            //   height: 10,
-                            // ),
-                            Text(
-                              "Type / Jenis",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )),
-                Flexible(
-                    flex: 1,
-                    child: GestureDetector(
-                      onTap: () {
-                        // print("menu teknisi");
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => new DataTeknis()));
-                      },
-                      child: new Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: Colors.blueAccent,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.settings,
-                              size: 40.0,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              "Teknisi",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )),
-              ],
+        appBar: AppBar(
+          elevation: 0.1,
+          backgroundColor: Color.fromARGB(255, 41, 69, 91),
+          title: Text('Helpdesk | ' + nama.toString()),
+          actions: <Widget>[
+            new IconButton(
+                onPressed: () {
+                  signOut();
+                },
+                icon: Icon(Icons.logout),
+                color: Colors.white)
+          ],
+        ),
+        body: GridView.count(
+          // primary: false,
+          padding: EdgeInsets.all(15),
+          // crossAxisSpacing: 5,
+          // mainAxisSpacing: 5,
+          crossAxisCount: 3,
+          children: <Widget>[
+            Container(
+              child: GestureDetector(
+                onTap: () {
+                  // print("type / jenis pc");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => new DataJenis()));
+                },
+                child: Card(
+                  color: Color.fromARGB(255, 41, 69, 91),
+                  child: new Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(80)),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            CupertinoIcons.tags_solid,
+                            size: 30.0,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            "Jenis PC",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ]),
+                  ),
+                ),
+              ),
             ),
-          ),
-          Flexible(
-            flex: 0,
-            child: Row(
-              children: <Widget>[
-                Flexible(
-                    flex: 1,
-                    child: GestureDetector(
-                      onTap: () {
-                        // print("data pc");
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => new DataPC()));
-                      },
-                      child: new Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: Colors.redAccent,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.desktop_windows,
-                              size: 40.0,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              "PC",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )),
-                Flexible(
-                    flex: 1,
-                    child: GestureDetector(
-                      onTap: () {
-                        // print("menu admin");
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => new DataAdmin()));
-                      },
-                      child: new Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: Colors.lightBlueAccent,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.admin_panel_settings_outlined,
-                              size: 40.0,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              "Admin",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )),
-              ],
+            Container(
+              child: GestureDetector(
+                onTap: () {
+                  // print("menu teknisi");
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => new DataTeknis()));
+                },
+                child: Card(
+                  color: Color.fromARGB(255, 41, 69, 91),
+                  child: new Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            CupertinoIcons.settings,
+                            size: 30.0,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            "Teknisi",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ]),
+                  ),
+                ),
+              ),
             ),
-          ),
-          Flexible(
-            flex: 0,
-            child: Row(
-              children: <Widget>[
-                Flexible(
-                    flex: 1,
-                    child: GestureDetector(
-                      onTap: () {
-                        // print("data pc");
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => new SearchTeknisi()));
-                      },
-                      child: new Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: Colors.redAccent,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.search,
-                              size: 40.0,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              "Cari detail teknisi",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )),
-                // Flexible(
-                //     flex: 1,
-                //     child: GestureDetector(
-                //       onTap: () {
-                //         // print("menu admin");
-                //         Navigator.push(
-                //             context,
-                //             MaterialPageRoute(
-                //                 builder: (context) => new DataAdmin()));
-                //       },
-                //       child: new Container(
-                //         width: MediaQuery.of(context).size.width,
-                //         margin: EdgeInsets.all(10),
-                //         decoration: BoxDecoration(
-                //             color: Colors.lightBlueAccent,
-                //             borderRadius: BorderRadius.circular(10)),
-                //         child: Column(
-                //           mainAxisAlignment: MainAxisAlignment.center,
-                //           children: <Widget>[
-                //             Icon(
-                //               Icons.admin_panel_settings_outlined,
-                //               size: 40.0,
-                //               color: Colors.white,
-                //             ),
-                //             SizedBox(
-                //               height: 20,
-                //             ),
-                //             Text(
-                //               "Admin",
-                //               style: TextStyle(
-                //                   color: Colors.white,
-                //                   fontSize: 16,
-                //                   fontWeight: FontWeight.bold),
-                //             ),
-                //           ],
-                //         ),
-                //       ),
-                //     )),
-              ],
+            Container(
+              child: GestureDetector(
+                onTap: () {
+                  // print("data pc");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => new DataPC()));
+                },
+                child: Card(
+                  color: Color.fromARGB(255, 41, 69, 91),
+                  child: new Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            CupertinoIcons.desktopcomputer,
+                            size: 30.0,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            "PC",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ]),
+                  ),
+                ),
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+            Container(
+              child: GestureDetector(
+                onTap: () {
+                  // print("menu admin");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => new DataAdmin()));
+                },
+                child: Card(
+                  color: Color.fromARGB(255, 41, 69, 91),
+                  child: new Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            CupertinoIcons.person_alt,
+                            size: 30.0,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            "Admin",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ]),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              child: GestureDetector(
+                onTap: () {
+                  // print("menu admin");
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => new SearchTeknisi()));
+                },
+                child: Card(
+                  color: Color.fromARGB(255, 41, 69, 91),
+                  child: new Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            CupertinoIcons.doc_text_search,
+                            size: 30.0,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            "Cari teknisi",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ]),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }

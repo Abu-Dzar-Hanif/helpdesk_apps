@@ -116,6 +116,7 @@ class _DataPCState extends State<DataPC> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 41, 69, 91),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -137,7 +138,7 @@ class _DataPCState extends State<DataPC> {
                   builder: (context) => new TambahPC(_lihatData)));
         },
         child: Icon(Icons.add),
-        backgroundColor: Color.fromRGBO(255, 82, 48, 1),
+        backgroundColor: Color.fromARGB(255, 41, 69, 91),
       ),
       body: RefreshIndicator(
           onRefresh: _lihatData,

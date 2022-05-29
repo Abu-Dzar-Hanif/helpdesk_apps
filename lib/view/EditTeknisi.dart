@@ -86,7 +86,20 @@ class _EditTeknisiState extends State<EditTeknisi> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(244, 244, 244, 1),
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 41, 69, 91),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              child: Text(
+                "Edit Teknisi " + id_teknisi.toString(),
+                style: TextStyle(color: Colors.white, fontSize: 20.0),
+              ),
+            )
+          ],
+        ),
+      ),
       body: Form(
         key: _key,
         child: ListView(
@@ -134,11 +147,20 @@ class _EditTeknisiState extends State<EditTeknisi> {
                 );
               },
             ),
+            SizedBox(
+              height: 25,
+            ),
             MaterialButton(
+              color: Color.fromARGB(255, 41, 69, 91),
               onPressed: () {
                 check();
               },
-              child: Text("Ubah"),
+              child: Text(
+                "Ubah",
+                style: TextStyle(color: Colors.white),
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40)),
             )
           ],
         ),

@@ -115,12 +115,13 @@ class _DataJenisState extends State<DataJenis> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 41, 69, 91),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
               child: Text(
-                "Data Type / Jenis PC",
+                "Data Jenis PC",
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
               ),
             )
@@ -136,7 +137,7 @@ class _DataJenisState extends State<DataJenis> {
                   builder: (context) => new TambahJenis(_lihatData)));
         },
         child: Icon(Icons.add),
-        backgroundColor: Color.fromRGBO(255, 82, 48, 1),
+        backgroundColor: Color.fromARGB(255, 41, 69, 91),
       ),
       body: RefreshIndicator(
           onRefresh: _lihatData,

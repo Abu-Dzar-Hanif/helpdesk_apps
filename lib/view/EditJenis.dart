@@ -64,7 +64,20 @@ class _EditJenisState extends State<EditJenis> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(244, 244, 244, 1),
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 41, 69, 91),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              child: Text(
+                "Edit Jenis PC " + id_jenis.toString(),
+                style: TextStyle(color: Colors.white, fontSize: 20.0),
+              ),
+            )
+          ],
+        ),
+      ),
       body: Form(
         key: _key,
         child: ListView(
@@ -82,11 +95,20 @@ class _EditJenisState extends State<EditJenis> {
               onSaved: (e) => jenis = e,
               decoration: InputDecoration(labelText: "Jenis PC"),
             ),
+            SizedBox(
+              height: 25,
+            ),
             MaterialButton(
+              color: Color.fromARGB(255, 41, 69, 91),
               onPressed: () {
                 check();
               },
-              child: Text("Ubah"),
+              child: Text(
+                "Ubah",
+                style: TextStyle(color: Colors.white),
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40)),
             )
           ],
         ),

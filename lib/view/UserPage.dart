@@ -37,58 +37,34 @@ class _UserPageState extends State<UserPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.1,
-        backgroundColor: Color.fromARGB(255, 41, 69, 91),
+        // const Color(0xff29455b) = const Color(#29455b)
+        backgroundColor: const Color(0xff29455b),
         title: Text('Helpdesk'),
-        actions: <Widget>[
-          new IconButton(
-            onPressed: () {
-              sigOut();
-            },
-            icon: Icon(Icons.double_arrow),
-            color: Colors.white,
-          ),
-        ],
       ),
       body: Column(
         children: <Widget>[
-          Flexible(
-            flex: 0,
-            child: Row(
-              children: <Widget>[
-                Flexible(
-                  flex: 1,
-                  child: new Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          "Halo " + nama.toString(),
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        Text(
-                            "Selamat datang di helpdesk IT Silahkan klik menu buat tiket jika terjadi kendala, Silahkan klik menu daftar tiket untuk melihat semua tiket yang anda punya",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.normal)),
-                      ],
-                    ),
+          Container(
+            margin: EdgeInsets.all(20),
+            child: Card(
+              color: const Color(0xfff1f0ec),
+              child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                ListTile(
+                  leading: Icon(
+                    CupertinoIcons.person_crop_circle_fill,
+                    size: 50,
+                    color: Colors.black,
                   ),
+                  title: Text("Halo " + nama.toString(),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold)),
+                  subtitle: Text(
+                      'Selamat datang di helpdesk IT Silahkan laporkan atau cek kendala anda'),
                 ),
-              ],
+              ]),
             ),
-          ),
+          )
         ],
       ),
       drawer: Drawer(
@@ -105,6 +81,14 @@ class _UserPageState extends State<UserPage> {
                 color: Color.fromARGB(255, 41, 69, 91),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, top: 10, bottom: 10),
+              child: Text("Tiket",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black54,
+                  )),
+            ),
             ListTile(
               leading: Icon(CupertinoIcons.create),
               title: Text("Buat Tiket"),
@@ -113,7 +97,13 @@ class _UserPageState extends State<UserPage> {
               leading: Icon(Icons.list_alt),
               title: Text("Riwayat Tiket"),
               onTap: () => print("buka data tiket"),
-            )
+            ),
+            Divider(height: 25, thickness: 1),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text("Loogout"),
+              onTap: () => sigOut(),
+            ),
           ],
         ),
       ),
