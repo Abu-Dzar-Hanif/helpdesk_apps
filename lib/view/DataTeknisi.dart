@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helpdesk_apps/model/TeknisModel.dart';
+import 'package:helpdesk_apps/model/TeknisiModel.dart';
 import 'package:helpdesk_apps/model/api.dart';
 import 'package:helpdesk_apps/view/EditTeknisi.dart';
 import 'package:helpdesk_apps/view/TambahTeknisi.dart';

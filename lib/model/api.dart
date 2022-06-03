@@ -21,4 +21,8 @@ class BaseUrl {
   static String urlTambahJenis = url + "api/tambah_jenis.php";
   static String urlHapusJenis = url + "api/hapus_jenis.php";
   static String urlEditJenis = url + "api/edit_jenis.php";
+  static String urlDataTiket = url + "api/data_tiket.php";
+  static String urlTambahTiket = url + "api/tambah_tiket.php";
+  static String urlEditTiket = url + "api/edit_tiket.php";
+  static String urlDataSts = url + "api/data_status.php";
 }

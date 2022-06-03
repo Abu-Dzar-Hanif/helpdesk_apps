@@ -3,6 +3,7 @@ import 'package:helpdesk_apps/view/DataAdmin.dart';
 import 'package:helpdesk_apps/view/DataJenis.dart';
 import 'package:helpdesk_apps/view/DataPC.dart';
 import 'package:helpdesk_apps/view/DataTeknisi.dart';
+import 'package:helpdesk_apps/view/DataTiket.dart';
 import 'package:helpdesk_apps/view/SearchTeknisi.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/cupertino.dart';
@@ -181,6 +182,38 @@ class _AdminPageState extends State<AdminPage> {
                           ),
                           Text(
                             "Admin",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ]),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              child: GestureDetector(
+                onTap: () {
+                  // print("menu tiket");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => new DataTket()));
+                },
+                child: Card(
+                  color: Color.fromARGB(255, 41, 69, 91),
+                  child: new Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            CupertinoIcons.tickets_fill,
+                            size: 30.0,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            "Data Tiket",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
