@@ -46,11 +46,11 @@ class _LoginPageState extends State<LoginPage> {
     final data = jsonDecode(response.body);
     int value = data['success'];
     String pesan = data['message'];
-    String usernameAPI = data['username'];
-    String idAPI = data['id_karyawan'];
-    String namaAPI = data['nama_karyawan'];
-    String userLevel = data['level'];
     if (value == 1) {
+      String usernameAPI = data['username'];
+      String idAPI = data['id_karyawan'];
+      String namaAPI = data['nama_karyawan'];
+      String userLevel = data['level'];
       if (userLevel == "1") {
         setState(() {
           _loginStatus = LoginStatus.signIn;
@@ -65,6 +65,7 @@ class _LoginPageState extends State<LoginPage> {
       print(pesan);
     } else {
       print(pesan);
+      dialogGagal();
     }
   }
 
@@ -112,6 +113,54 @@ class _LoginPageState extends State<LoginPage> {
       preferences.commit();
       _loginStatus = LoginStatus.notSignIn;
     });
+  }
+
+  dialogGagal() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            child: ListView(
+                padding: EdgeInsets.all(20.0),
+                shrinkWrap: true,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(
+                        Icons.warning,
+                        size: 40.0,
+                        color: Colors.red,
+                      ),
+                      Text(
+                        "Username / Password salah",
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 18.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text(
+                          "Oke",
+                          style: TextStyle(
+                              fontSize: 12.0, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SizedBox(width: 25.0),
+                    ],
+                  )
+                ]),
+          );
+        });
   }
 
   void disopse() {

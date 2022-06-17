@@ -144,7 +144,6 @@ class _EditTiketState extends State<EditTiket> {
   void initState() {
     super.initState();
     setup();
-    print(statusA.toString());
   }
 
   @override
