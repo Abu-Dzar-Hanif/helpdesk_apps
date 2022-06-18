@@ -180,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
         return new Scaffold(
           body: Form(
             key: _key,
-            autovalidate: _autovalidadate,
+            autovalidateMode: AutovalidateMode.always,
             child: ListView(
               padding: EdgeInsets.only(top: 90.0, left: 20.0, right: 20.0),
               children: <Widget>[

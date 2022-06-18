@@ -5,6 +5,7 @@ import 'package:helpdesk_apps/model/api.dart';
 import 'package:helpdesk_apps/view/LoadingPageOne.dart';
 import 'package:helpdesk_apps/view/RiwayatTiket.dart';
 import 'package:helpdesk_apps/view/TambahTiket.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -164,6 +165,15 @@ class _UserPageState extends State<UserPage> {
                                                   .arrow_right_square_fill,
                                               size: 25,
                                               color: Color(0xff29455b))),
+                                    ),
+                                    Container(
+                                      child: new LinearPercentIndicator(
+                                        width: 140.0,
+                                        lineHeight: 14.0,
+                                        percent: 0.5,
+                                        backgroundColor: Colors.grey,
+                                        progressColor: Colors.blue,
+                                      ),
                                     ),
                                   ],
                                 ),
