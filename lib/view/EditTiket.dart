@@ -23,7 +23,7 @@ class _EditTiketState extends State<EditTiket> {
   final _key = new GlobalKey<FormState>();
   TextEditingController? txtidTiket;
   setup() async {
-    statusA = widget.model.status;
+    statusA = widget.model.sts;
     id_tiket = widget.model.id_tiket;
   }
 
@@ -178,7 +178,7 @@ class _EditTiketState extends State<EditTiket> {
                 return DropdownButton<StatusModel>(
                   items: snapshot.data!
                       .map((listSts) => DropdownMenuItem(
-                            child: Text(listSts.status.toString()),
+                            child: Text(listSts.sts.toString()),
                             value: listSts,
                           ))
                       .toList(),
@@ -189,9 +189,9 @@ class _EditTiketState extends State<EditTiket> {
                     });
                   },
                   isExpanded: false,
-                  hint: Text(status == null || status == widget.model.status
-                      ? widget.model.status.toString()
-                      : _currentSts!.status.toString()),
+                  hint: Text(status == null || status == widget.model.sts
+                      ? widget.model.sts.toString()
+                      : _currentSts!.sts.toString()),
                 );
               },
             ),

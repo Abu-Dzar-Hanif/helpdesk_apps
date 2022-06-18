@@ -49,7 +49,7 @@ class _RiwayatTiketState extends State<RiwayatTiket> {
             api['tgl_buat'],
             api['tgl_selesai'],
             api['teknisi'],
-            api['status']);
+            api['sts']);
         list.add(ab);
       });
       setState(() {
@@ -92,13 +92,13 @@ class _RiwayatTiketState extends State<RiwayatTiket> {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             ListTile(
-                              leading: x.status.toString() == "1"
+                              leading: x.sts.toString() == "Menunggu"
                                   ? Icon(
                                       CupertinoIcons.ticket_fill,
                                       size: 50,
                                       color: Color(0xff203646),
                                     )
-                                  : x.status.toString() == "2"
+                                  : x.sts.toString() == "Dikerjakan"
                                       ? Icon(
                                           CupertinoIcons.ticket_fill,
                                           size: 50,
@@ -111,7 +111,7 @@ class _RiwayatTiketState extends State<RiwayatTiket> {
                                         ),
                               title: Text("ID : " + x.id_tiket.toString(),
                                   style: TextStyle(fontSize: 15.0)),
-                              subtitle: Text(x.status.toString(),
+                              subtitle: Text(x.sts.toString(),
                                   style: TextStyle(
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.bold,

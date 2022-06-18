@@ -41,7 +41,7 @@ class _DataTketState extends State<DataTket> {
             api['tgl_buat'],
             api['tgl_selesai'],
             api['teknisi'],
-            api['status']);
+            api['sts']);
         list.add(ab);
       });
       setState(() {
@@ -97,14 +97,14 @@ class _DataTketState extends State<DataTket> {
                                     style: TextStyle(
                                       fontSize: 15.0,
                                     )),
-                                Text(x.status.toString(),
+                                Text(x.sts.toString(),
                                     style: TextStyle(
                                       fontSize: 15.0,
                                     ))
                               ],
                             ),
                           ),
-                          if (x.status == "3")
+                          if (x.sts == "Selesai")
                             ...[]
                           else ...[
                             IconButton(

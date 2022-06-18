@@ -1,9 +1,9 @@
 class StatusModel {
   String? id_sts;
-  String? status;
-  StatusModel(this.id_sts, this.status);
+  String? sts;
+  StatusModel(this.id_sts, this.sts);
   StatusModel.fromJson(Map<String, dynamic> json) {
     id_sts = json['id_sts'];
-    status = json['status'];
+    sts = json['sts'];
   }
 }

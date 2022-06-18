@@ -55,7 +55,7 @@ class _UserPageState extends State<UserPage> {
             api['tgl_buat'],
             api['tgl_selesai'],
             api['teknisi'],
-            api['status']);
+            api['sts']);
         list.add(ab);
       });
       setState(() {
@@ -128,17 +128,17 @@ class _UserPageState extends State<UserPage> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
                                     ListTile(
-                                      leading: x.status.toString() == "1"
+                                      leading: x.sts.toString() == "Menunggu"
                                           ? Icon(
                                               CupertinoIcons.ticket_fill,
                                               size: 50,
                                               color: Color(0xffb30000),
                                             )
-                                          : x.status.toString() == "2"
+                                          : x.sts.toString() == "Dikerjakan"
                                               ? Icon(
                                                   CupertinoIcons.ticket_fill,
                                                   size: 50,
-                                                  color: Color(0xffe6b800),
+                                                  color: Color(0xffff8566),
                                                 )
                                               : Icon(
                                                   CupertinoIcons.ticket_fill,

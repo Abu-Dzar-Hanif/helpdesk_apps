@@ -7,9 +7,9 @@ class TiketModel {
   String? tgl_buat;
   String? tgl_selesai;
   String? teknisi;
-  String? status;
+  String? sts;
   TiketModel(this.id_tiket, this.id_karyawan, this.nama_karyawan, this.keluhan,
-      this.foto, this.tgl_buat, this.tgl_selesai, this.teknisi, this.status);
+      this.foto, this.tgl_buat, this.tgl_selesai, this.teknisi, this.sts);
   TiketModel.fromJson(Map<String, dynamic> json) {
     id_tiket = json['id_tiket'];
     id_karyawan = json['id_karyawan'];
@@ -19,6 +19,6 @@ class TiketModel {
     tgl_buat = json['tgl_buat'];
     tgl_selesai = json['tgl_selesai'];
     teknisi = json['teknisi'];
-    status = json['status'];
+    sts = json['sts'];
   }
 }
