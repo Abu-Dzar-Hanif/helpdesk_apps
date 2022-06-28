@@ -1,11 +1,11 @@
 # helpdesk_apps
 
-Nama Tim : M2V |
-Applikasi : helpdesk |
-Anggota Tim :
--Abu Dzar Hanif (frontend flutter),
--Syamsul ma'arif (backend php),
--Yolanda Dwianugrah (backend php)
+- Nama Tim : M2V
+- Applikasi : helpdesk
+- Anggota Tim :
+- Abu Dzar Hanif (frontend flutter),
+- Syamsul ma'arif (backend php),
+- Yolanda Dwianugrah (backend php)
 
 ## Getting Started
 

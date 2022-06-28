@@ -1,7 +1,7 @@
 class BaseUrl {
   // static String url = "http://192.168.43.38/apps_helpdesk/";
   static String url = "https://m2vrimuru.skom.id/api/apps_helpdesk/";
-  static String url2 = "http://192.168.43.38/api_project/";
+  static String url2 = "https://inven.ictgr1.com/";
   static String paths = "https://m2vrimuru.skom.id/api/apps_helpdesk/images/";
   static String urlLogin = url + "api/login.php";
   static String urlLogin2 = url2 + "api/login.php";
