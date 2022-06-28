@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:helpdesk_apps/model/TiketModel.dart';
 import 'package:helpdesk_apps/model/api.dart';
 import 'package:helpdesk_apps/view/DetailTiket.dart';
+import 'package:helpdesk_apps/view/LoadingPageOne.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'dart:convert';
@@ -77,9 +79,7 @@ class _RiwayatTiketState extends State<RiwayatTiket> {
           onRefresh: _lihatData,
           key: _refresh,
           child: loading
-              ? Center(
-                  child: Text("Tidak Tiket Yang di proses"),
-                )
+              ? LoadingPageOne()
               : ListView.builder(
                   itemCount: list.length,
                   itemBuilder: (context, i) {
@@ -92,33 +92,48 @@ class _RiwayatTiketState extends State<RiwayatTiket> {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             ListTile(
-                              leading: x.sts.toString() == "Menunggu"
-                                  ? Icon(
-                                      CupertinoIcons.ticket_fill,
-                                      size: 50,
-                                      color: Color(0xff203646),
-                                    )
-                                  : x.sts.toString() == "Dikerjakan"
-                                      ? Icon(
-                                          CupertinoIcons.ticket_fill,
-                                          size: 50,
-                                          color: Color(0xffff8566),
+                              leading: Icon(
+                                CupertinoIcons.ticket_fill,
+                                size: 50,
+                                color: Color(0xff29455b),
+                              ),
+                              title: Padding(
+                                padding: EdgeInsets.only(
+                                  left: 10.0,
+                                ),
+                                child: Text("ID : " + x.id_tiket.toString(),
+                                    style: TextStyle(fontSize: 15.0)),
+                              ),
+                              subtitle: Padding(
+                                padding: EdgeInsets.all(1.0),
+                                child: new LinearPercentIndicator(
+                                  animation: true,
+                                  width: 115.0,
+                                  lineHeight: 14.0,
+                                  percent: x.sts.toString() == "Menunggu"
+                                      ? 0.25
+                                      : x.sts.toString() == "Dikerjakan"
+                                          ? 0.5
+                                          : 1,
+                                  center: x.sts.toString() == "Menunggu"
+                                      ? Text(
+                                          "25%",
+                                          style: TextStyle(
+                                              color: Color(0xfff1f0ec)),
                                         )
-                                      : Icon(
-                                          CupertinoIcons.ticket_fill,
-                                          size: 50,
-                                          color: Color(0xff008000),
-                                        ),
-                              title: Text("ID : " + x.id_tiket.toString(),
-                                  style: TextStyle(fontSize: 15.0)),
-                              subtitle: Text(x.sts.toString(),
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                                      : x.sts.toString() == "Dikerjakan"
+                                          ? Text("50%",
+                                              style: TextStyle(
+                                                  color: Color(0xfff1f0ec)))
+                                          : Text("100%",
+                                              style: TextStyle(
+                                                  color: Color(0xfff1f0ec))),
+                                  backgroundColor: Colors.grey,
+                                  progressColor: Color(0xff29455b),
+                                ),
+                              ),
                               trailing: IconButton(
                                   onPressed: () {
-                                    // Detail
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>

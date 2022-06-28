@@ -1,9 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.helpdesk_apps">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="helpdesk_apps"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/logo_m2v">
         <activity
             android:name=".MainActivity"
             android:exported="true"

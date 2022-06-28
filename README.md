@@ -1,6 +1,11 @@
 # helpdesk_apps
 
-A new Flutter project.
+Nama Tim : M2V
+Applikasi helpdesk
+Anggota Tim :
+-Abu Dzar Hanif (frontend flutter)
+-Syamsul ma'arif (backend php)
+-Yolanda Dwianugrah (backend php)
 
 ## Getting Started
 

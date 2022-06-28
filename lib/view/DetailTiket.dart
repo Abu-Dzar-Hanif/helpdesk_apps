@@ -210,7 +210,7 @@ class _DetailTiketState extends State<DetailTiket> {
                           Container(
                             padding: EdgeInsets.only(top: 5.0, bottom: 1.0),
                             child: Text(
-                              "keyboard rusak, komputer lemot,internet tidak stabil",
+                              widget.model.keluhan.toString(),
                               style: TextStyle(
                                 fontSize: 18.0,
                                 fontWeight: FontWeight.bold,

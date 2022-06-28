@@ -5,6 +5,7 @@ import 'package:helpdesk_apps/model/api.dart';
 import 'package:helpdesk_apps/view/LoadingPageOne.dart';
 import 'package:helpdesk_apps/view/RiwayatTiket.dart';
 import 'package:helpdesk_apps/view/TambahTiket.dart';
+import 'package:helpdesk_apps/view/DetailTiket.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -19,13 +20,14 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  String? idKaryawan, userName, nama;
+  String? idKaryawan, userName, nama, Lvl;
   getPref() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
       idKaryawan = pref.getString("id_karyawan");
       userName = pref.getString("username");
       nama = pref.getString("nama_karyawan");
+      Lvl = pref.getString("level");
     });
     _lihatData();
   }
@@ -97,18 +99,30 @@ class _UserPageState extends State<UserPage> {
                   leading: Icon(
                     CupertinoIcons.person_crop_circle_fill,
                     size: 50,
-                    color: Colors.black,
+                    color: Color.fromARGB(255, 23, 33, 41),
                   ),
                   title: Text("Halo " + nama.toString(),
                       style: TextStyle(
-                          color: Colors.black,
+                          color: Color.fromARGB(255, 23, 33, 41),
                           fontSize: 20,
                           fontWeight: FontWeight.bold)),
                   subtitle: Text(
-                      'Selamat datang di helpdesk IT Silahkan laporkan atau cek kendala anda'),
+                      'Selamat datang di helpdesk IT Silahkan laporkan atau cek kendala anda',
+                      style: TextStyle(color: Color.fromARGB(255, 23, 33, 41))),
                 ),
               ]),
             ),
+            //   decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(4),
+            //       boxShadow: [
+            //         new BoxShadow(
+            //           color: Colors.grey.withOpacity(0.5),
+            //           blurRadius: 2.5, // soften the shadow
+            //           spreadRadius: 1.0,
+            //           offset: Offset(4.0, 4.0), //extend the shadow
+            //           // soften the shadow
+            //         ),
+            //       ]),
           ),
           Expanded(
               child: RefreshIndicator(
@@ -129,51 +143,63 @@ class _UserPageState extends State<UserPage> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
                                     ListTile(
-                                      leading: x.sts.toString() == "Menunggu"
-                                          ? Icon(
-                                              CupertinoIcons.ticket_fill,
-                                              size: 50,
-                                              color: Color(0xffb30000),
-                                            )
-                                          : x.sts.toString() == "Dikerjakan"
-                                              ? Icon(
-                                                  CupertinoIcons.ticket_fill,
-                                                  size: 50,
-                                                  color: Color(0xffff8566),
+                                      leading: Icon(
+                                        CupertinoIcons.ticket_fill,
+                                        size: 50,
+                                        color: Color(0xff29455b),
+                                      ),
+                                      title: Padding(
+                                        padding: EdgeInsets.only(
+                                          left: 10.0,
+                                        ),
+                                        child: Text(
+                                            "ID : " + x.id_tiket.toString(),
+                                            style: TextStyle(fontSize: 15.0)),
+                                      ),
+                                      subtitle: Padding(
+                                        padding: EdgeInsets.all(1.0),
+                                        child: new LinearPercentIndicator(
+                                          animation: true,
+                                          width: 115.0,
+                                          lineHeight: 14.0,
+                                          percent: x.sts.toString() ==
+                                                  "Menunggu"
+                                              ? 0.25
+                                              : x.sts.toString() == "Dikerjakan"
+                                                  ? 0.5
+                                                  : 1,
+                                          center: x.sts.toString() == "Menunggu"
+                                              ? Text(
+                                                  "25%",
+                                                  style: TextStyle(
+                                                      color: Color(0xfff1f0ec)),
                                                 )
-                                              : Icon(
-                                                  CupertinoIcons.ticket_fill,
-                                                  size: 50,
-                                                  color: Color(0xff008000),
-                                                ),
-                                      title: Text(
-                                          "ID : " + x.id_tiket.toString(),
-                                          style: TextStyle(fontSize: 15.0)),
-                                      subtitle: Text(x.nama_karyawan.toString(),
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                          )),
+                                              : x.sts.toString() == "Dikerjakan"
+                                                  ? Text("50%",
+                                                      style: TextStyle(
+                                                          color: Color(
+                                                              0xfff1f0ec)))
+                                                  : Text("100%",
+                                                      style: TextStyle(
+                                                          color: Color(
+                                                              0xfff1f0ec))),
+                                          backgroundColor: Colors.grey,
+                                          progressColor: Color(0xff29455b),
+                                        ),
+                                      ),
                                       trailing: IconButton(
                                           onPressed: () {
-                                            // edit
-                                            // Navigator.of(context).push(MaterialPageRoute(
-                                            //     builder: (context) =>
-                                            //         EditTiket(x, _lihatData)));
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        DetailTiket(
+                                                            x, _lihatData)));
                                           },
                                           icon: Icon(
                                               CupertinoIcons
                                                   .arrow_right_square_fill,
                                               size: 25,
                                               color: Color(0xff29455b))),
-                                    ),
-                                    Container(
-                                      child: new LinearPercentIndicator(
-                                        width: 140.0,
-                                        lineHeight: 14.0,
-                                        percent: 0.5,
-                                        backgroundColor: Colors.grey,
-                                        progressColor: Colors.blue,
-                                      ),
                                     ),
                                   ],
                                 ),
@@ -189,7 +215,8 @@ class _UserPageState extends State<UserPage> {
           children: <Widget>[
             UserAccountsDrawerHeader(
               accountName: Text(nama.toString()),
-              accountEmail: Text(idKaryawan.toString()),
+              accountEmail:
+                  Lvl.toString() == "0" ? Text("User") : Text("Admin"),
               currentAccountPicture: new CircleAvatar(
                 backgroundImage: AssetImage("assets/logo_m2v_n2.jpg"),
               ),
