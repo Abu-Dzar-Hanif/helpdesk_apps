@@ -44,9 +44,10 @@ class _EditTiketState extends State<EditTiket> {
   }
 
   StatusModel? _currentSts;
-  final String? linkSts = BaseUrl.urlDataSts;
+  final String? linkSts = BaseUrl.urlGetsts;
   Future<List<StatusModel>> _fetchSts() async {
-    var response = await http.get(Uri.parse(linkSts.toString()));
+    var response =
+        await http.get(Uri.parse(linkSts.toString() + statusA.toString()));
     print('hasil: ' + response.statusCode.toString());
     if (response.statusCode == 200) {
       final items = json.decode(response.body).cast<Map<String, dynamic>>();
@@ -63,7 +64,7 @@ class _EditTiketState extends State<EditTiket> {
     final form = _key.currentState;
     if ((form as dynamic).validate()) {
       (form as dynamic).save();
-      if (statusA == "1") {
+      if (statusA == "Menunggu") {
         proseTiket();
       } else {
         proseTiket3();
@@ -198,7 +199,7 @@ class _EditTiketState extends State<EditTiket> {
             SizedBox(
               height: 20,
             ),
-            if (statusA == "1") ...[
+            if (statusA == "Menunggu") ...[
               Text("Teknisi"),
               FutureBuilder<List<TeknisiModel>>(
                 future: _fetchTeknisi(),

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:helpdesk_apps/model/api.dart';
 import 'package:helpdesk_apps/view/AdminPage.dart';
@@ -205,6 +204,13 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextFormField(
                   obscureText: _secureText,
+                  validator: (e) {
+                    if (e!.isEmpty) {
+                      return "silahkan isi password";
+                    } else {
+                      return null;
+                    }
+                  },
                   onSaved: (e) => password = e,
                   decoration: InputDecoration(
                       labelText: "Password",

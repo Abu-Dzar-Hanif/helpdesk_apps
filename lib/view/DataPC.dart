@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:helpdesk_apps/model/PCModel.dart';
 import 'package:helpdesk_apps/model/api.dart';
 import 'package:helpdesk_apps/view/EditPC.dart';
+import 'package:helpdesk_apps/view/LoadingPage.dart';
 import 'package:helpdesk_apps/view/TambahPC.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -144,7 +145,7 @@ class _DataPCState extends State<DataPC> {
           onRefresh: _lihatData,
           key: _refresh,
           child: loading
-              ? Center(child: CircularProgressIndicator())
+              ? LoadingPage()
               : ListView.builder(
                   itemCount: list.length,
                   itemBuilder: (context, i) {

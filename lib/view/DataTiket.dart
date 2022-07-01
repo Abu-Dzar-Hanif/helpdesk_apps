@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:helpdesk_apps/model/TiketModel.dart';
 import 'package:helpdesk_apps/model/api.dart';
+import 'package:helpdesk_apps/view/DetailTiket.dart';
 import 'package:helpdesk_apps/view/EditTiket.dart';
+import 'package:helpdesk_apps/view/LoadingPage.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'dart:convert';
@@ -77,7 +80,7 @@ class _DataTketState extends State<DataTket> {
           onRefresh: _lihatData,
           key: _refresh,
           child: loading
-              ? Center(child: CircularProgressIndicator())
+              ? LoadingPage()
               : ListView.builder(
                   itemCount: list.length,
                   itemBuilder: (context, i) {
@@ -117,11 +120,17 @@ class _DataTketState extends State<DataTket> {
                                 icon: Icon(Icons.edit)),
                           ],
                           IconButton(
-                              onPressed: () {
-                                // delete
-                                // dialogHapus(x.id_pc);
-                              },
-                              icon: Icon(Icons.delete))
+                            onPressed: () {
+                              // delete
+                              // dialogHapus(x.id_pc);
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetailTiket(x, _lihatData)));
+                            },
+                            icon: Icon(
+                              CupertinoIcons.arrow_right_square,
+                            ),
+                          )
                         ],
                       ),
                     );

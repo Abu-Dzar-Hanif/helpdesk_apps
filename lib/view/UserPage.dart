@@ -255,7 +255,7 @@ class _UserPageState extends State<UserPage> {
             Divider(height: 25, thickness: 1),
             ListTile(
               leading: Icon(Icons.logout),
-              title: Text("Loogout"),
+              title: Text("Logout"),
               onTap: () => sigOut(),
             ),
           ],

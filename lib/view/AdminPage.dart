@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:helpdesk_apps/view/DataAdmin.dart';
 import 'package:helpdesk_apps/view/DataJenis.dart';
+import 'package:helpdesk_apps/view/DataKaryawan.dart';
 import 'package:helpdesk_apps/view/DataPC.dart';
 import 'package:helpdesk_apps/view/DataTeknisi.dart';
 import 'package:helpdesk_apps/view/DataTiket.dart';
-import 'package:helpdesk_apps/view/SearchTeknisi.dart';
+import 'package:helpdesk_apps/view/SearchTiket.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -164,8 +164,10 @@ class _AdminPageState extends State<AdminPage> {
               child: GestureDetector(
                 onTap: () {
                   // print("menu admin");
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => new DataAdmin()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => new DataKaryawan()));
                 },
                 child: Card(
                   color: Color.fromARGB(255, 41, 69, 91),
@@ -181,7 +183,7 @@ class _AdminPageState extends State<AdminPage> {
                             color: Colors.white,
                           ),
                           Text(
-                            "Admin",
+                            "Data Karyawan",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -231,7 +233,7 @@ class _AdminPageState extends State<AdminPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => new SearchTeknisi()));
+                          builder: (context) => new SearchTiket()));
                 },
                 child: Card(
                   color: Color.fromARGB(255, 41, 69, 91),
@@ -247,7 +249,7 @@ class _AdminPageState extends State<AdminPage> {
                             color: Colors.white,
                           ),
                           Text(
-                            "Cari teknisi",
+                            "Cek Tiket",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,

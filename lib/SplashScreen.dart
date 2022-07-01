@@ -29,10 +29,26 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-          child:
-              Image.asset('assets/logo_m2v_n2.jpg', height: 200, width: 200)),
-    );
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Center(
+                child: Image.asset('assets/logo_m2v_n2.jpg',
+                    height: 200, width: 200),
+              ),
+              SizedBox(
+                height: 100.0,
+              ),
+              Container(
+                child: Text(
+                  "Copyright M2V Rimuru Code",
+                  style: TextStyle(fontSize: 14, color: Color(0xff29455b)),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }

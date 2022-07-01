@@ -1,5 +1,5 @@
 class BaseUrl {
-  // static String url = "http://192.168.43.38/apps_helpdesk/";
+  // static String urlg = "http://192.168.43.38/apps_helpdesk/";
   static String url = "https://m2vrimuru.skom.id/api/apps_helpdesk/";
   static String url2 = "https://inven.ictgr1.com/";
   static String paths = "https://m2vrimuru.skom.id/api/apps_helpdesk/images/";
@@ -28,4 +28,6 @@ class BaseUrl {
   static String urlDataSts = url + "api/data_status.php";
   static String urlGetTiket = url + "api/get_data_tiket.php?id_karyawan=";
   static String urlGetUsrTiket = url + "api/get_tiket_user.php?id_karyawan=";
+  static String urlDataKaryawan = url2 + "api/data_karyawan.php";
+  static String urlGetsts = url + "api/get_sts.php?sts=";
 }

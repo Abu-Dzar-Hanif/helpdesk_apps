@@ -2,7 +2,7 @@
     package="com.example.helpdesk_apps">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="helpdesk_apps"
+        android:label="Helpdesk"
         android:name="${applicationName}"
         android:icon="@mipmap/logo_m2v">
         <activity
